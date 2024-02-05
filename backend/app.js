@@ -6,6 +6,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+import {HttpStatus} from './enums/enums.js'
+
 import {userRouter} from './routes/user.js';
 import {carsRouter} from './routes/cars.js';
 
@@ -21,7 +23,7 @@ app.use('/api/cars', carsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  next(createError(HttpStatus.NOT_FOUND));
 });
 
 // error handler
@@ -31,7 +33,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
+  res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
   res.json({
     error: {
       message: err.message,
