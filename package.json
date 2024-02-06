@@ -14,5 +14,9 @@
   "scripts": {
     "build:frontend": "npm run build -w frontend",
     "build:backend": "npm run build -w backend"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2"
   }
 }
