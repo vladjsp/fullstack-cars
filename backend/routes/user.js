@@ -14,5 +14,4 @@ userRouter.post('/sign-up', signUp);
 /* user current*/
 userRouter.get('/current', auth, current);
 
-
-export {userRouter};
+export { userRouter };
