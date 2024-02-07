@@ -59,3 +59,37 @@ export const addNewCar = async (req, res) => {
             .json({ message: ErrorMessage.GENERAL });
     }
 };
+
+export const deleteCarById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const currentUserId = req.user.id;
+        const carData = await prisma.car.findUnique({
+            where: {
+                id: id,
+            },
+        });
+
+        if (currentUserId !== carData.userId) {
+            return res
+                .status(HttpStatus.UNAUTHORIZED)
+                .json({ message: ErrorMessage.NOT_AUTHORIZED });
+        }
+
+        await prisma.car.delete({
+            where: {
+                id: id,
+            },
+        });
+
+        return res
+            .status(HttpStatus.OK)
+            .json(
+                `${carData.color} ${carData.make} ${carData.model} has been deleted.`,
+            );
+    } catch (error) {
+        return res
+            .status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .json({ message: ErrorMessage.GENERAL });
+    }
+};

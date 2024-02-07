@@ -1,6 +1,11 @@
 import express from 'express';
 import { auth } from '../middleware/auth.js';
-import { addNewCar, getAllCars, getCarById } from '../controllers/cars.js';
+import {
+    addNewCar,
+    deleteCarById,
+    getAllCars,
+    getCarById,
+} from '../controllers/cars.js';
 
 const carsRouter = express.Router();
 
@@ -14,7 +19,7 @@ carsRouter.get('/:id', auth, getCarById);
 carsRouter.post('/create', auth, addNewCar);
 
 // /api/cars/delete/:id
-carsRouter.delete('/delete/:id', auth, () => console.log('DELETE a car'));
+carsRouter.delete('/delete/:id', auth, deleteCarById);
 
 // /api/cars/delete/:id
 carsRouter.patch('/edit/:id', auth, () => console.log('PATCH car info'));
