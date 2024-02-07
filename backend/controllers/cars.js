@@ -93,3 +93,35 @@ export const deleteCarById = async (req, res) => {
             .json({ message: ErrorMessage.GENERAL });
     }
 };
+
+export const editCarData = async (req, res) => {
+    try {
+        const currentUserId = req.user.id;
+        const { id } = req.params;
+        const data = req.body;
+        const carData = await prisma.car.findUnique({
+            where: {
+                id: id,
+            },
+        });
+
+        if (currentUserId !== carData.userId) {
+            return res
+                .status(HttpStatus.UNAUTHORIZED)
+                .json({ message: ErrorMessage.NOT_AUTHORIZED });
+        }
+
+        await prisma.car.update({
+            where: { id: id },
+            data: data,
+        });
+
+        return res
+            .status(HttpStatus.OK)
+            .json({ message: 'Car info has been updated.', data: data });
+    } catch (error) {
+        return res
+            .status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .json({ message: ErrorMessage.GENERAL });
+    }
+};

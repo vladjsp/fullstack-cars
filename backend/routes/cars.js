@@ -3,6 +3,7 @@ import { auth } from '../middleware/auth.js';
 import {
     addNewCar,
     deleteCarById,
+    editCarData,
     getAllCars,
     getCarById,
 } from '../controllers/cars.js';
@@ -21,7 +22,7 @@ carsRouter.post('/create', auth, addNewCar);
 // /api/cars/delete/:id
 carsRouter.delete('/delete/:id', auth, deleteCarById);
 
-// /api/cars/delete/:id
-carsRouter.patch('/edit/:id', auth, () => console.log('PATCH car info'));
+// /api/cars/edit/:id
+carsRouter.patch('/edit/:id', auth, editCarData);
 
 export { carsRouter };
