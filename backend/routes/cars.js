@@ -1,10 +1,22 @@
 import express from 'express';
+import { auth } from '../middleware/auth.js';
+import { getAllCars, getCarById } from '../controllers/cars.js';
 
 const carsRouter = express.Router();
 
-/* GET cars listing. */
-carsRouter.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// /api/cars/
+carsRouter.get('/', auth, getAllCars);
 
-export {carsRouter};
+// /api/cars/:id
+carsRouter.get('/:id', auth, getCarById);
+
+// /api/cars/create
+carsRouter.post('/create', auth, () => console.log('POST new car'));
+
+// /api/cars/delete/:id
+carsRouter.delete('/delete/:id', auth, () => console.log('DELETE a car'));
+
+// /api/cars/delete/:id
+carsRouter.patch('/edit/:id', auth, () => console.log('PATCH car info'));
+
+export { carsRouter };

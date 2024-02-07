@@ -4,7 +4,8 @@ const ErrorMessage = {
     EMAIL_ALREADY_EXISTS: 'Email is already taken.',
     NOT_FULL_CREDENTIALS: 'Please fill all required fields.',
     NOT_VALID_CREDENTIALS: 'Email or password is incorrect',
-    INTERNAL_ERROR: 'Error. Please try again later.'
+    INTERNAL_ERROR: 'Error. Please try again later.',
+    CARS_NOT_FOUND: 'No cars found!',
 };
 
 export { ErrorMessage };
