@@ -6,6 +6,8 @@ const ErrorMessage = {
     NOT_VALID_CREDENTIALS: 'Email or password is incorrect',
     INTERNAL_ERROR: 'Error. Please try again later.',
     CARS_NOT_FOUND: 'No cars found!',
+    NOT_FULL_CAR_INFO: 'Please, fill all required car information fields.',
+    GENERAL: 'Something went wrong. Please try again later.',
 };
 
 export { ErrorMessage };

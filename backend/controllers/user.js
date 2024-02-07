@@ -82,8 +82,8 @@ export const signUp = async (req, res, next) => {
         });
     } else {
         return res
-            .status(HttpStatus.BAD_REQUEST)
-            .json({ message: ErrorMessage.INTERNAL_ERROR });
+            .status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .json({ message: ErrorMessage.GENERAL });
     }
 };
 
