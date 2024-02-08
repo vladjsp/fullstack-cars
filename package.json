@@ -1,22 +1,22 @@
 {
-  "name": "fullstack-cars",
-  "version": "0.0.1",
-  "private": true,
-  "author": "vladjsp",
-  "engines": {
-    "node": "20.x.x",
-    "npm": "10.x.x"
-  },
-  "workspaces": [
-    "frontend",
-    "backend"
-  ],
-  "scripts": {
-    "build:frontend": "npm run build -w frontend",
-    "build:backend": "npm run build -w backend"
-  },
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "jsonwebtoken": "^9.0.2"
-  }
+    "name": "fullstack-cars",
+    "version": "0.0.1",
+    "private": true,
+    "author": "vladjsp",
+    "engines": {
+        "node": "20.x.x",
+        "npm": "10.x.x"
+    },
+    "workspaces": [
+        "frontend",
+        "backend"
+    ],
+    "scripts": {
+        "build:frontend": "npm run build -w frontend",
+        "build:backend": "npm run build -w backend",
+        "dev": "concurrently \"npm run server --prefix backend\" \"npm run dev --prefix frontend\""
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    }
 }
