@@ -2,46 +2,31 @@
 logs
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+node_modules
+dist
+dist-ssr
+*.local
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Compiled binary addons
-build/Release
-
-# Dependency directories
-node_modules/
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Optional stylelint cache
-.stylelintcache
-
-# Output of 'npm pack'
-*.tgz
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # dotenv environment variable files
 .env
-.env.development.local
-.env.test.local
-.env.production.local
 .env.local
 
-# Stores VSCode versions used for testing VSCode extensions
-.vscode-test
 .db
 *.db
 backend/prisma/dev.db
