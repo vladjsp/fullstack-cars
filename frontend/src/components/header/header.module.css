@@ -7,4 +7,10 @@
 
 .teamIcon {
     font-size: 26px;
+    margin-right: 12px;
+}
+
+.logoButton {
+    font-weight: 600;
+    text-transform: uppercase;
 }

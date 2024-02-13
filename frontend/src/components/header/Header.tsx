@@ -1,5 +1,5 @@
 import { Layout, Space } from 'antd';
-import { TeamOutlined } from '@ant-design/icons';
+import { CarOutlined, UserOutlined, LoginOutlined } from '@ant-design/icons';
 import { Button } from '../button/Button';
 import styles from './header.module.css';
 import { Link } from 'react-router-dom';
@@ -9,17 +9,23 @@ const Header = () => {
     return (
         <Layout.Header className={styles.header}>
             <Space className={styles.xxl}>
-                <TeamOutlined className={styles.teamIcon} />
+                <CarOutlined className={styles.teamIcon} />
                 <Link to={Path.home}>
-                    <Button>Cars Catalogue</Button>
+                    <Button type="text" className={styles.logoButton}>
+                        Cars Catalogue
+                    </Button>
                 </Link>
             </Space>
             <Space>
                 <Link to={Path.signIn}>
-                    <Button>Sign In</Button>
+                    <Button type="text" icon={<LoginOutlined />}>
+                        Sign In
+                    </Button>
                 </Link>
                 <Link to={Path.signUp}>
-                    <Button>Sign Up</Button>
+                    <Button type="text" icon={<UserOutlined />}>
+                        Sign Up
+                    </Button>
                 </Link>
             </Space>
         </Layout.Header>
