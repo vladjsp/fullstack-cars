@@ -12,7 +12,7 @@ const SignIn = () => {
         <Layout>
             <Row align="middle" justify="center">
                 <Card title="Sign In" style={{ width: '30rem' }}>
-                    <Form onFinish={onFinish}>
+                    <Form onFinish={onFinish} name="login">
                         <Input
                             name="email"
                             type="email"
