@@ -69,7 +69,7 @@ export const PasswordInput = ({
                 { required: true, message: 'Please, enter your password.' },
                 ({ getFieldValue }) => ({
                     validator(_, value) {
-                        if (!value || getFieldValue('password') === value) {
+                        if (!value) {
                             return Promise.resolve();
                         }
 
@@ -82,13 +82,15 @@ export const PasswordInput = ({
                                     'The new password that you entered do not match!',
                                 ),
                             );
-                        }
-                        if (value.length < 6) {
-                            return Promise.reject(
-                                new Error(
-                                    'Password should be at least 6 char.',
-                                ),
-                            );
+                        } else {
+                            if (value.length < 6) {
+                                return Promise.reject(
+                                    new Error(
+                                        'Пароль должен быть длиньше 6-ти символов',
+                                    ),
+                                );
+                            }
+                            return Promise.resolve();
                         }
                     },
                 }),
