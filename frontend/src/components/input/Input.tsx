@@ -24,6 +24,10 @@ export const Input = ({
             shouldUpdate={true}
             rules={[
                 {
+                    type: 'email',
+                    message: 'The input is not valid E-mail!',
+                },
+                {
                     required: required,
                     message: 'Please input your E-mail!',
                 },
@@ -65,9 +69,9 @@ export const PasswordInput = ({
                 { required: true, message: 'Please, enter your password.' },
                 ({ getFieldValue }) => ({
                     validator(_, value) {
-                        // if (!value || getFieldValue('password') === value) {
-                        //     return Promise.resolve();
-                        // }
+                        if (!value || getFieldValue('password') === value) {
+                            return Promise.resolve();
+                        }
 
                         if (name === 'confirmPassword') {
                             if (!value || getFieldValue('password') === value) {
@@ -78,14 +82,13 @@ export const PasswordInput = ({
                                     'The new password that you entered do not match!',
                                 ),
                             );
-                        } else {
-                            if (value.length < 6) {
-                                return Promise.reject(
-                                    new Error(
-                                        'Password should be at least 6 char.',
-                                    ),
-                                );
-                            }
+                        }
+                        if (value.length < 6) {
+                            return Promise.reject(
+                                new Error(
+                                    'Password should be at least 6 char.',
+                                ),
+                            );
                         }
                     },
                 }),
