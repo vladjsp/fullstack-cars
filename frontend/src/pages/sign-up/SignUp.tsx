@@ -11,7 +11,7 @@ const SignUp = () => {
     return (
         <Layout>
             <Row align="middle" justify="center">
-                <Card title="Sign In" style={{ width: '30rem' }}>
+                <Card title="Sign Up" style={{ width: '30rem' }}>
                     <Form onFinish={onFinish} name="register">
                         <Input
                             name="email"
@@ -29,7 +29,7 @@ const SignUp = () => {
                         />
                         <Form.Item>
                             <Button type="primary" htmlType="submit">
-                                Sign In
+                                Sign Up
                             </Button>
                         </Form.Item>
                     </Form>
