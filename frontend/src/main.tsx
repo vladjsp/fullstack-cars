@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ConfigProvider, theme } from 'antd';
 
-import { store } from './redux/store.ts';
+import { store } from './app/store.ts';
 import { Path } from './enums/enums.ts';
 import { Home, SignIn, SignUp } from './pages';
 
