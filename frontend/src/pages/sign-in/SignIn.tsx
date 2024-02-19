@@ -1,13 +1,35 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Input, Layout, PasswordInput } from '../../components';
 import { Card, Form, Row, Space, Typography } from 'antd';
-import { Path } from '../../enums/enums';
 
-const onFinish = (values: FormData) => {
-    console.log('Success:', values);
-};
+import {
+    Button,
+    ErrorMessage,
+    Input,
+    Layout,
+    PasswordInput,
+} from '../../components';
+import { Path } from '../../enums/enums';
+import { UserData, useSignInMutation } from '../../app/services/auth';
+import { isErrorWithMessage } from '../../utils/isErrorWithMessage';
 
 const SignIn = () => {
+    const [error, setError] = useState('');
+    const [signInUser, signInUserResult] = useSignInMutation();
+
+    const onFinish = async (values: UserData) => {
+        try {
+            await signInUser(values).unwrap();
+        } catch (error) {
+            const isError = isErrorWithMessage(error);
+            if (isError) {
+                setError(error.data.message);
+            } else {
+                setError('Unknown error');
+            }
+        }
+    };
+
     return (
         <Layout>
             <Row align="middle" justify="center">
@@ -33,6 +55,7 @@ const SignIn = () => {
                         <Typography.Text>
                             No account? <Link to={Path.signUp}>Sign up</Link>
                         </Typography.Text>
+                        <ErrorMessage message={error} />
                     </Space>
                 </Card>
             </Row>

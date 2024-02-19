@@ -11,4 +11,4 @@ const ErrorMessage = ({ message }: ErrorMessageProps) => {
     return <Alert message={message} type="error" />;
 };
 
-export default ErrorMessage;
+export { ErrorMessage };
