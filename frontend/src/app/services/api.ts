@@ -6,10 +6,10 @@ const baseQuery = fetchBaseQuery({
     baseUrl: baseUrl,
 });
 
-const baseQueryWithRetry = retry(baseQuery, { maxRetries: 2 });
+const baseQueryWithRetry = retry(baseQuery, { maxRetries: 0 });
 
 export const api = createApi({
-    reducerPath: 'carsApi',
+    reducerPath: 'userApi',
     baseQuery: baseQueryWithRetry,
     refetchOnMountOrArgChange: true,
     endpoints: () => ({}),
